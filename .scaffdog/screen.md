@@ -7,59 +7,56 @@ output: "**/*"
 ignore: []
 ---
 
-# `{{ input }}.tsx`
+# `{{ input | pascal }}Screen/index.tsx`
 
 ```tsx
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { Title } from 'react-native-paper'
+import { AppPage } from 'components'
+import { useTranslation } from 'react-i18next'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
+interface IProps {}
 
-type Props = {}
-
-const {{ input }} = ({}: Props) => (
-<View style={styles.container}></View>
-)
-
-export default {{ input }}
+export const {{ input | pascal }}Screen: React.FC<IProps> = () => {
+  const { t } = useTranslation()
+  return (
+    <AppPage title={t('hello_world')} padding>
+      <Title>{t('hello_world')}</Title>
+    </AppPage>
+  )
+}
+export default {{ input | pascal }}Screen
 
 ```
 
-# `{{ input | pascal }}/{{ input | pascal }}.story.tsx`
+# `{{ input | pascal }}Screen/{{ input | pascal }}Screen.story.tsx`
 
 ```jsx
 import * as React from 'react'
 import { storiesOf } from '@storybook/react'
-import {{ input | pascal }} from './index'
+import {{ input | pascal }}Screen from './index'
 import { withKnobs } from '@storybook/addon-knobs'
-import { AppPage } from 'containers'
 import { withRedux } from 'helpers'
 
 storiesOf('Screens', module)
   .addDecorator(withKnobs)
   .addDecorator(withRedux())
-  .add('{{ input | pascal }}', () => (
-    <AppPage>
-      <{{ input | pascal }} />
-    </AppPage>
+  .add('{{ input | pascal }}Screen', () => (
+    <{{ input | pascal }}Screen />
   ))
 
 ```
 
-# `{{ input | pascal }}/__tests__/{{ input | pascal }}.test.tsx`
+# `{{ input | pascal }}Screen/__tests__/{{ input | pascal }}Screen.test.tsx`
 
 ```jsx
 import React from "react";
 import renderer from "react-test-renderer";
 import "react-native";
-import { {{ input | pascal }} } from "../";
+import { {{ input | pascal }}Screen } from "../";
 
 it("renders correctly", () => {
-  const tree = renderer.create(<{{ input | pascal }} />).toJSON();
+  const tree = renderer.create(<{{ input | pascal }}Screen />).toJSON();
 
   expect(tree).toMatchSnapshot();
 });

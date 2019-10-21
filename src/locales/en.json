@@ -3,7 +3,11 @@
         "title": "Close app",
         "message": "Are you sure you want to quit?"
     },
+    "register": {
+        "title": "Register"
+    },
     "login": {
+        "title": "Login",
         "welcome": "Welcome {{name}} to our localized app!",
         "login_button": "Login",
         "signup_button": "Sign Up"
@@ -13,6 +17,11 @@
         "title": "Your Profile"
     },
     "form": {
+        "phone": "Phone",
+        "firstName": "Fist Name",
+        "lastName": "Last Name",
+        "login": "Login",
+        "register": "Register",
         "email": "E-mail",
         "password": "Passwrod",
         "submit": "Submit",
@@ -22,5 +31,6 @@
     },
     "yes": "Yes",
     "no": "No",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "close": "Close"
 }

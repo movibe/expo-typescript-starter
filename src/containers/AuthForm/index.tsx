@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { Button, TextInput, HelperText } from 'react-native-paper'
+import { Button, TextInput, HelperText, Text } from 'react-native-paper'
 import { Container } from 'components'
 import useForm from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
-import { SocialIcon } from 'react-native-elements'
 
 type FormData = {
   email: string
@@ -12,12 +11,14 @@ type FormData = {
 interface IProps {
   loading?: boolean
   onSubmit: (form: FormData) => void
-  onFacebook: () => void
+  onFacebook?: () => void
+  onForgot?: () => void
 }
 
 export const AuthForm: React.FC<IProps> = ({
   onSubmit,
   onFacebook,
+  onForgot,
   loading
 }) => {
   const { t } = useTranslation()
@@ -65,6 +66,10 @@ export const AuthForm: React.FC<IProps> = ({
         {t('form.emailRequired')}
       </HelperText>
 
+      <Button mode="text" onPress={onForgot}>
+        <Text style={{ textAlign: 'right' }}>{t('form.forgot')}</Text>
+      </Button>
+
       <TextInput
         //@ts-ignore
         ref={register(
@@ -94,13 +99,16 @@ export const AuthForm: React.FC<IProps> = ({
         {t('form.submit')}
       </Button>
 
-      <SocialIcon
-        disabled={loading}
-        button
-        title={t('form.facebook')}
-        type="facebook"
-        onPress={() => onFacebook()}
-      />
+      {onFacebook && (
+        <Button
+          mode="contained"
+          disabled={loading}
+          loading={loading}
+          onPress={onFacebook}
+        >
+          {t('form.facebook')}
+        </Button>
+      )}
     </Container>
   )
 }

@@ -1,8 +1,12 @@
-import { createSwitchNavigator } from 'react-navigation'
-import Home from './Home'
+import { createSwitchNavigator, createAppContainer } from 'react-navigation'
+import Guest from './Guest/index.nav'
+// import Logged from './Logged/index.nav'
+// Import screen here
 
-export default createSwitchNavigator({
-  Home: {
-    screen: Home,
-  },
-})
+export default createAppContainer(
+  createSwitchNavigator({
+    Guest
+    // Logged
+    // Insert screen here
+  })
+)

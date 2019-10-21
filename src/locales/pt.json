@@ -3,6 +3,9 @@
         "title": "Fechar aplicativo",
         "message": "Tem certeza que deseja sair?"
     },
+    "register": {
+        "title": "Cadastre-se"
+    },
     "login": {
         "welcome": "Bem vindo {{name}} para o nosso aplicativo localizado!",
         "login_button": "Conecte-se",
@@ -12,6 +15,8 @@
         "title": "Seu perfil"
     },
     "form": {
+        "login": "Login",
+        "register": "Cadastro",
         "email": "E-mail",
         "password": "Senha",
         "submit": "Enviar",

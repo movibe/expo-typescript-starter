@@ -10,11 +10,14 @@ module.exports = (api) => {
         {
           "root": ["./src"],
           "alias": {
+            'WebView': 'react-native-web-webview',
             'react-native-vector-icons': '@expo/vector-icons',
             "assets": "./assets",
+            "apollo": "./apollo",
             "config": "./src/config",
+            "server": "./src/server",
+            "hooks": "./src/hooks",
             "locales": "./src/locales",
-            "helpers": "./src/helpers",
             "containers": "./src/containers",
             "components": "./src/components",
             "screens": "./src/screens",

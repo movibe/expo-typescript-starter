@@ -8,9 +8,9 @@ import { ThemeProvider } from 'styled-components/native'
 interface Props {
   children: any
 }
-export const StoryContainer: React.FC<Props> = ({ children }) => {
+export const StorybookContainer: React.FC<Props> = ({ children }) => {
   const theme = useSelector((state: IAppState) => state.app.theme)
-  const _theme = theme === 'light' ? lightTheme : darkTheme
+  const _theme = theme.dark ? darkTheme : lightTheme
   return (
     <PaperProvider theme={_theme}>
       <ThemeProvider theme={_theme.colors}>{children}</ThemeProvider>

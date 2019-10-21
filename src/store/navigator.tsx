@@ -19,6 +19,7 @@ import {
   useColorScheme,
   AppearanceProvider
 } from 'react-native-appearance'
+import useIsAuthenticated from 'hooks/useIsAuthenticated'
 
 export const routerMiddleware = createReactNavigationReduxMiddleware(
   (state: any) => state
@@ -33,6 +34,7 @@ export const Navigator: React.FC = () => {
   const [Dark, setDark] = useState(colorScheme)
   const nav = useSelector((state: IAppState) => state.nav)
   const { t } = useTranslation()
+  const authenticated = useIsAuthenticated()
 
   React.useEffect(() => {
     i18n.changeLanguage(language)
@@ -45,6 +47,7 @@ export const Navigator: React.FC = () => {
         )
       }
     )
+    console.log('authenticated', authenticated)
 
     return () => {
       BackHandler.removeEventListener('hardwareBackPress', onBackPress)
