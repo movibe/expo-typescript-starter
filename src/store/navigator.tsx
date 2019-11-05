@@ -37,6 +37,7 @@ export const Navigator: React.FC = () => {
   const authenticated = useIsAuthenticated()
 
   React.useEffect(() => {
+    console.log('colorScheme', colorScheme)
     i18n.changeLanguage(language)
     BackHandler.addEventListener('hardwareBackPress', onBackPress)
     const themeSubscription = Appearance.addChangeListener(

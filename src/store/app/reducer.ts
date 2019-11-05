@@ -1,12 +1,11 @@
-import { Reducer, Action } from 'redux'
+import { Action, Reducer } from 'redux'
+import { themes } from 'theme'
 import * as actions from './actions'
 import { IApp } from './types'
-import { useColorScheme } from 'react-native-appearance'
-import { themes } from 'theme'
 
 export const initialState: IApp = {
   language: 'en',
-  theme: useColorScheme() === 'dark' ? themes.dark : themes.light,
+  theme:  themes.light,
   online: false
 }
 

@@ -7,11 +7,11 @@ import TermScreen from './TermScreen'
 
 export default createStackNavigator(
   {
-    AuthScreen: { screen: AuthScreen, path: 'auth' },
+``    AuthScreen: { screen: AuthScreen, path: '' },
     LoginScreen: { screen: LoginScreen, path: 'login' },
-    RegisterScreen: { screen: RegisterScreen },
-    ForgotScreen: { screen: ForgotScreen },
-    TermScreen: { screen: TermScreen }
+    RegisterScreen: { screen: RegisterScreen, path: 'register' },
+    ForgotScreen: { screen: ForgotScreen, path: 'forgot' },
+    TermScreen: { screen: TermScreen, path: 'terms' }
   },
   {
     initialRouteName: 'AuthScreen',
