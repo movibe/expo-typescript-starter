@@ -2,8 +2,7 @@ import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { AppHeader } from './index'
 import { withKnobs, text } from '@storybook/addon-knobs'
-import { StorybookContainer } from 'hooks'
-import { withRedux } from 'hooks'
+import { StorybookContainer, withRedux } from 'hocs'
 
 storiesOf('Components', module)
   .addDecorator(withKnobs)

@@ -1,10 +1,6 @@
 import { combineEpics } from 'redux-observable'
-import { AppChangeLanguageEpic } from 'store/app/epic';
+import { AppChangeLanguageEpic } from 'store/app/epic'
 
-const epics = [
-    AppChangeLanguageEpic
-]
+const epics = [AppChangeLanguageEpic]
 
-const rootEpic: any = combineEpics(...epics)
-
-export default rootEpic
+export const rootEpic: any = combineEpics(...epics)

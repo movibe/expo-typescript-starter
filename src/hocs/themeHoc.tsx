@@ -6,20 +6,20 @@ import {
 import { useDispatch, useSelector } from 'react-redux'
 import React, { useState } from 'react'
 import { BackHandler, Alert } from 'react-native'
-import routes from 'screens'
+import routes from './routes'
 import { lightTheme, darkTheme } from 'theme'
-import { IAppState } from './types'
+import { IAppState } from 'store/types'
 import { Provider as PaperProvider } from 'react-native-paper'
 import { ThemeProvider } from 'styled-components/native'
 import i18n from 'i18next'
 import { useTranslation } from 'react-i18next'
-import { AppThemeChange } from './app/actions'
+import { AppThemeChange } from 'store/app/actions'
 import {
   Appearance,
   useColorScheme,
   AppearanceProvider
 } from 'react-native-appearance'
-import useIsAuthenticated from 'hooks/useIsAuthenticated'
+import { useIsAuthenticated } from 'hocs'
 
 export const routerMiddleware = createReactNavigationReduxMiddleware(
   (state: any) => state
@@ -30,31 +30,27 @@ const App: any = createReduxContainer(routes, 'root')
 export const Navigator: React.FC = () => {
   const colorScheme = useColorScheme()
   const dispatch = useDispatch()
-  const language = useSelector((state: IAppState) => state.app.language)
+  const isDark = useSelector((state: IAppState) => state.app.theme)
   const [Dark, setDark] = useState(colorScheme)
   const nav = useSelector((state: IAppState) => state.nav)
   const { t } = useTranslation()
   const authenticated = useIsAuthenticated()
 
+  const changeTheme = colorScheme => {
+    dispatch(AppThemeChange(colorScheme === 'dark' ? darkTheme : lightTheme))
+  }
+
   React.useEffect(() => {
-    console.log('colorScheme', colorScheme)
-    i18n.changeLanguage(language)
-    BackHandler.addEventListener('hardwareBackPress', onBackPress)
-    const themeSubscription = Appearance.addChangeListener(
-      ({ colorScheme }) => {
-        setDark(colorScheme)
-        dispatch(
-          AppThemeChange(colorScheme === 'dark' ? darkTheme : lightTheme)
-        )
-      }
+    changeTheme(colorScheme)
+    const themeSubscription = Appearance.addChangeListener(({ colorScheme }) =>
+      setDark(colorScheme)
     )
     console.log('authenticated', authenticated)
 
     return () => {
-      BackHandler.removeEventListener('hardwareBackPress', onBackPress)
       themeSubscription.remove()
     }
-  }, [language, Dark])
+  }, [Dark])
 
   const onBackPress = () => {
     if (nav.index === 0) {
@@ -79,17 +75,15 @@ export const Navigator: React.FC = () => {
     return true
   }
 
-  const _theme = Dark === 'dark' ? darkTheme : lightTheme
+  const _theme = isDark.dark ? darkTheme : lightTheme
+  console.log({
+    isDark,
+    _theme
+  })
   return (
     <AppearanceProvider>
       <PaperProvider theme={_theme}>
-        <ThemeProvider theme={_theme.colors}>
-          <App
-            state={nav}
-            dispatch={dispatch}
-            screenProps={{ theme: _theme }}
-          />
-        </ThemeProvider>
+        <ThemeProvider theme={_theme.colors}>{children}</ThemeProvider>
       </PaperProvider>
     </AppearanceProvider>
   )

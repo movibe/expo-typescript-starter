@@ -15,7 +15,7 @@ module.exports = api => {
             apollo: './apollo',
             config: './src/config',
             server: './src/server',
-            hooks: './src/hooks',
+            hocs: './src/hocs',
             locales: './src/locales',
             containers: './src/containers',
             components: './src/components',

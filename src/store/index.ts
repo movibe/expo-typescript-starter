@@ -3,8 +3,8 @@ import { applyMiddleware, createStore, StoreCreator } from 'redux'
 import { createEpicMiddleware } from 'redux-observable'
 import { persistReducer, persistStore } from 'redux-persist'
 import { composeWithDevTools } from 'redux-devtools-extension'
-import { routerMiddleware } from './navigator'
-import rootEpic from './rootEpic'
+import { routerMiddleware } from 'screens'
+import { rootEpic } from './rootEpic'
 import rootReducer from './reducers'
 
 const blackList = ['']
@@ -13,34 +13,30 @@ const epicMiddleware = createEpicMiddleware()
 const persistConfig = {
   blackList,
   key: 'root',
-  storage: AsyncStorage,
+  storage: AsyncStorage
 }
 
-const middlewares = [epicMiddleware, routerMiddleware]
+const middleware = [epicMiddleware, routerMiddleware]
 
 const enhancers = __DEV__
-  ? composeWithDevTools({})(applyMiddleware(...middlewares))
-  : applyMiddleware(...middlewares)
-
+  ? composeWithDevTools({})(applyMiddleware(...middleware))
+  : applyMiddleware(...middleware)
 
 const reducers = persistReducer(persistConfig, rootReducer)
 
-const configureStore = (_clean: boolean = false, epic: boolean = false): any => {
+export const configureStore = (
+  _clean: boolean = false,
+  epic: boolean = false
+): any => {
   const create: StoreCreator = createStore
 
   const store = create(reducers, enhancers)
-  const persistor = persistStore(store)
+  const persister = persistStore(store)
 
-  if (epic) {
-    epicMiddleware.run(rootEpic)
-  }
+  if (epic) epicMiddleware.run(rootEpic)
 
   // Clear Store
-  if (_clean) {
-    persistor.purge()
-  }
+  if (_clean) persister.purge()
 
-  return { persistor, store }
+  return { persister, store }
 }
-
-export default configureStore

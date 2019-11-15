@@ -4,3 +4,5 @@ declare module "react-navigation" {
   function createStackNavigator(options: any): any;
   function createBottomTabNavigator(options: any): any;
 }
+
+declare module 'react-native-appearance'

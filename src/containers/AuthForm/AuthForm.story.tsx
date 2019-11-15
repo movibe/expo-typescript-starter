@@ -3,8 +3,7 @@ import { storiesOf } from '@storybook/react'
 import { AuthForm } from './index'
 import { withKnobs, boolean } from '@storybook/addon-knobs'
 import { action } from '@storybook/addon-actions'
-import { StorybookContainer } from 'hooks'
-import { withRedux } from 'hooks'
+import { StorybookContainer, withRedux } from 'hocs'
 
 storiesOf('Containers', module)
   .addDecorator(withKnobs)

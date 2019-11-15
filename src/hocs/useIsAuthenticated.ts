@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { firebase } from 'server'
 import { AsyncStorage } from 'react-native'
 
-const useIsAuthenticated = () => {
+export const useIsAuthenticated = () => {
   const [isAuthenticated, setIsAuthenticated]: [
     undefined | Boolean,
     React.Dispatch<React.SetStateAction<any>>
@@ -30,5 +30,3 @@ const useIsAuthenticated = () => {
 
   return isAuthenticated
 }
-
-export default useIsAuthenticated

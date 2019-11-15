@@ -2,8 +2,7 @@ import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { AppPage } from './index'
 import { withKnobs, text } from '@storybook/addon-knobs'
-import { StorybookContainer } from 'hooks'
-import { withRedux } from 'hooks'
+import { StorybookContainer, withRedux } from 'hocs'
 import { Text } from 'react-native-paper'
 
 storiesOf('Components', module)
