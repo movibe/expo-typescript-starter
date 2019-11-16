@@ -1,8 +1,9 @@
-import React, { useState, Fragment } from 'react'
+import React, { useState } from 'react'
 import { Button, TextInput, HelperText } from 'react-native-paper'
 import useForm from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { SocialIcon } from 'react-native-elements'
+import { Container } from 'components';
 
 type FormData = {
   email: string
@@ -40,7 +41,7 @@ export const LoginForm: React.FC<IProps> = ({
   }
 
   return (
-    <Fragment>
+    <Container>
       <TextInput
         //@ts-ignore
         ref={register(
@@ -102,6 +103,6 @@ export const LoginForm: React.FC<IProps> = ({
           onPress={onFacebook}
         />
       )}
-    </Fragment>
+    </Container>
   )
 }

@@ -36,18 +36,17 @@ export const {{ input | pascal }} : React.FC<Props> = ({}: Props):JSX.Element =>
 ```jsx
 import * as React from 'react'
 import { storiesOf } from '@storybook/react'
-import {{ input | pascal }} from './index'
+import { {{ input | pascal }} } from './index'
 import { withKnobs } from '@storybook/addon-knobs'
-import { AppPage } from 'containers'
-import { withRedux } from 'helpers'
+import { StorybookContainer, withRedux } from 'hocs'
 
 storiesOf('Components', module)
   .addDecorator(withKnobs)
   .addDecorator(withRedux())
   .add('{{ input | pascal }}', () => (
-    <AppPage>
+    <StorybookContainer>
       <{{ input | pascal }} />
-    </AppPage>
+    </StorybookContainer>
   ))
 
 ```

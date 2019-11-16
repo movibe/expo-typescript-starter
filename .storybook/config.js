@@ -1,12 +1,16 @@
-import { configure, addDecorator, addParameters } from '@storybook/react'
-import { setOptions } from '@storybook/addon-options'
-import { withKnobs } from '@storybook/addon-knobs'
-import { withI18next } from 'storybook-addon-i18next'
-import { withThemesProvider } from 'storybook-addon-styled-component-theme'
-import i18n from 'i18next'
-import '../src/locales'
-import { lightTheme } from '../src/theme'
-const App = require('../app.json')
+import { configure, addDecorator, addParameters } from '@storybook/react';
+import { setOptions } from '@storybook/addon-options';
+import { withKnobs } from '@storybook/addon-knobs';
+import { withI18next } from 'storybook-addon-i18next';
+import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import i18n from 'i18next';
+import '../src/locales';
+const App = require('../app.json');
+
+const loadStories = () => {
+	const req = require.context('../src', true, /\.story\.tsx?$/);
+	req.keys().forEach((story) => req(story));
+};
 
 setOptions({
 	name: App.name,
@@ -15,13 +19,18 @@ setOptions({
 	showSearchBox: false,
 	showAddonPanel: true,
 	showStoriesPanel: true
-})
+});
 
+// addDecorator(withScreenshot);
 addParameters({
 	viewport: {
-		defaultViewport: 'iphone6'
+		viewports: INITIAL_VIEWPORTS,
+		defaultViewport: 'iphone5'
+	},
+	options: {
+		addonPanelInRight: true
 	}
-})
+});
 
 addDecorator(
 	withI18next({
@@ -31,14 +40,7 @@ addDecorator(
 			pt: 'Português'
 		}
 	})
-)
+);
+addDecorator(withKnobs({ escapeHTML: false }));
 
-// addDecorator(withThemesProvider([lightTheme]))
-addDecorator(withKnobs({ escapeHTML: false }))
-
-const loadStories = () => {
-	const req = require.context('../src', true, /\.story\.tsx?$/)
-	req.keys().forEach(story => req(story))
-}
-
-configure(loadStories, module)
+configure(loadStories, module);
