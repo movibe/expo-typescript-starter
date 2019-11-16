@@ -4,6 +4,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { withI18next } from 'storybook-addon-i18next';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 import i18n from 'i18next';
+import { themes } from '@storybook/theming';
 import '../src/locales';
 const App = require('../app.json');
 
@@ -28,6 +29,7 @@ addParameters({
 		defaultViewport: 'iphone5'
 	},
 	options: {
+		theme: themes.dark,
 		addonPanelInRight: true
 	}
 });
