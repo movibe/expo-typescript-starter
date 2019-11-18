@@ -21,9 +21,11 @@ export const LoginScreen: React.FC<IProps> = () => {
   const onSubmit = async form => {
     setLoading(true)
     try {
-      await firebase
+      const user = await firebase
         .auth()
         .signInWithEmailAndPassword(form.email, form.password)
+      console.log(user)
+      
       setLoading(false)
     } catch (e) {
       console.log('Erro na criação da conta', e)
