@@ -9,7 +9,7 @@ storiesOf('Containers', module)
   .addDecorator(withKnobs)
   .addDecorator(withRedux())
   .add('ForgotForm', () => (
-    <StorybookContainer>
+    <StorybookContainer padding={boolean('padding', true)}>
       <ForgotForm
         loading={boolean('loading', false)}
         onSubmit={action('onSubmit')}

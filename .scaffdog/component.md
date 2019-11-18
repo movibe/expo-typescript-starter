@@ -37,14 +37,14 @@ export const {{ input | pascal }} : React.FC<Props> = ({}: Props):JSX.Element =>
 import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { {{ input | pascal }} } from './index'
-import { withKnobs } from '@storybook/addon-knobs'
+import { withKnobs, boolean } from '@storybook/addon-knobs'
 import { StorybookContainer, withRedux } from 'hocs'
 
 storiesOf('Components', module)
   .addDecorator(withKnobs)
   .addDecorator(withRedux())
   .add('{{ input | pascal }}', () => (
-    <StorybookContainer>
+    <StorybookContainer padding={boolean('padding', false)}>
       <{{ input | pascal }} />
     </StorybookContainer>
   ))

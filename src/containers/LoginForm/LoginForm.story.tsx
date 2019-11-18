@@ -9,7 +9,7 @@ storiesOf('Containers', module)
   .addDecorator(withKnobs)
   .addDecorator(withRedux())
   .add('LoginForm', () => (
-    <StorybookContainer>
+    <StorybookContainer padding={boolean('padding', true)}>
       <LoginForm
         loading={boolean('loading', false)}
         onFacebook={action('onFacebook')}

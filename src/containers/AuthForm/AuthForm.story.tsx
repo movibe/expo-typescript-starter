@@ -9,7 +9,7 @@ storiesOf('Containers', module)
   .addDecorator(withKnobs)
   .addDecorator(withRedux())
   .add('AuthForm', () => (
-    <StorybookContainer>
+    <StorybookContainer padding={boolean('padding', true)}>
       <AuthForm
         loading={boolean('loading', false)}
         onFacebook={action('onFacebook')}

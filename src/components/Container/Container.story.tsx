@@ -2,7 +2,7 @@ import * as React from 'react'
 import { storiesOf } from '@storybook/react'
 import { Text } from 'react-native'
 import { Container } from './index'
-import { withKnobs, text } from '@storybook/addon-knobs'
+import { withKnobs, text, boolean } from '@storybook/addon-knobs';
 import { StorybookContainer, withRedux } from 'hocs'
 
 storiesOf('Components', module)
@@ -10,7 +10,7 @@ storiesOf('Components', module)
   .addDecorator(withRedux())
   .add('Container', () => (
     <StorybookContainer>
-      <Container>
+      <Container padding={boolean('padding', false)}>
         <Text>{text('title', 'Hello world')}</Text>
       </Container>
     </StorybookContainer>

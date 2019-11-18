@@ -1,8 +1,11 @@
 import styled from 'styled-components/native'
 import { IStyled } from 'theme'
 
-export const Container = styled.View`
+interface IContainer extends IStyled {
+  padding?: boolean
+}
+export const Container = styled.View<IContainer>`
   flex: 1;
-  background-color: ${(props: IStyled) => props.theme.background};
-  padding: 10px;
+  background-color: ${(props) => props.theme.background};
+  padding: ${(props)=> props.padding ? '10px' : '0px'};
 `
