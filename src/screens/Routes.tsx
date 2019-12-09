@@ -1,73 +1,56 @@
 import * as React from 'react';
-import { AsyncStorage, Button, Text, TextInput, View } from 'react-native';
-import { NavigationNativeContainer } from '@react-navigation/native';
-import createStackNavigator from './MainNavigation';
+import { Platform, ActivityIndicator, AsyncStorage, StatusBar, View, Text } from 'react-native';
+import { createBrowserApp } from '@react-navigation/web';
+import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import Auth from './Guest';
 
-function SplashScreen() {
-	return (
-		<View>
-			<Text>Loading...</Text>
-		</View>
-	);
-}
+class AuthLoadingScreen extends React.Component {
+	componentDidMount() {
+		this._bootstrapAsync();
+	}
 
-function HomeScreen() {
-	return (
-		<View>
-			<Text>Welcome home!</Text>
-		</View>
-	);
-}
+	// Fetch the token from storage then navigate to our appropriate place
+	_bootstrapAsync = async () => {
+		const userToken = await AsyncStorage.getItem('userToken');
 
-function SignInScreen({ setUserToken }) {
-	return (
-		<View>
+		// This will switch to the App screen or Auth screen and this loading
+		// screen will be unmounted and thrown away.
+		this.props.navigation.navigate(userToken ? 'Main' : 'Auth');
+	};
+
+	// Render any loading content that you like here
+	render() {
+		return (
 			<View>
-				<Text>Name: </Text>
-				<TextInput placeholder="Username" />
-				<Text>Password: </Text>
-				<TextInput placeholder="Password" secureTextEntry />
-				<Button title="Sign in" mode="contained" onPress={() => setUserToken('token')} />
+				<ActivityIndicator />
+				<StatusBar barStyle="default" />
 			</View>
-		</View>
-	);
+		);
+	}
 }
 
-export default function App() {
-	const [ isLoading, setIsLoading ] = React.useState(true);
-	const [ userToken, setUserToken ] = React.useState(null);
+const Main = () => (
+	<View>
+		<Text>Loading...</Text>
+	</View>
+);
 
-	React.useEffect(() => {
-		// Fetch the token from storage then navigate to our appropriate place
-		const bootstrapAsync = async () => {
-			// We should also handle error for production apps
-			const userToken = await AsyncStorage.getItem('userToken');
+const AppSwitchNavigator = createSwitchNavigator(
+	{
+		AuthLoading: { screen: AuthLoadingScreen, path: '' },
+		Auth,
+		Main: { screen: Main, path: 'main' },
+		Error: Main
+	},
+	{
+		initialRouteName: 'AuthLoading'
+	}
+);
 
-			// This will switch to the App screen or Auth screen and this loading
-			// screen will be unmounted and thrown away.
-			setIsLoading(false);
-			setUserToken(userToken);
-		};
+const createApp = Platform.select({
+	// web: (config) => createBrowserApp(config, { history: 'hash' }),
+	// web: (config) => createBrowserApp(config),
+	default: (config) => createAppContainer(config)
+});
 
-		bootstrapAsync();
-	}, []);
-
-	const Stack = createStackNavigator();
-
-	return (
-		<NavigationNativeContainer>
-			<Stack.Navigator>
-				{isLoading ? (
-					// We haven't finished checking for the token yet
-					<Stack.Screen name="Splash" component={SplashScreen} />
-				) : userToken === null ? (
-					// No token found, user isn't signed in
-					<Stack.Screen name="SignIn">{() => <SignInScreen setUserToken={setUserToken} />}</Stack.Screen>
-				) : (
-					// User is signed in
-					<Stack.Screen name="Home" component={HomeScreen} />
-				)}
-			</Stack.Navigator>
-		</NavigationNativeContainer>
-	);
-}
+export default createApp(AppSwitchNavigator);
