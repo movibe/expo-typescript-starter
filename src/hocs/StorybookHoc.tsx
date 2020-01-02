@@ -10,7 +10,7 @@ interface Props {
 	children: any
 	padding?: boolean
 }
-export const StorybookContainer: React.FC<Props> = ({ padding, children }) => {
+export const StorybookHoc: React.FC<Props> = ({ padding, children }) => {
 	const theme = useSelector((state: IAppState) => state.app.theme)
 	const _theme = theme.dark ? darkTheme : lightTheme
 	return (

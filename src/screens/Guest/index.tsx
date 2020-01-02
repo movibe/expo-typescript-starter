@@ -5,10 +5,15 @@ import LoginScreen from './LoginScreen/index';
 import TermScreen from './TermScreen/index';
 import RegisterScreen from './RegisterScreen/index';
 
-export default createStackNavigator({
-	AuthScreen,
-	RegisterScreen,
-	ForgotScreen,
-	LoginScreen,
-	TermScreen
-});
+export default createStackNavigator(
+	{
+		AuthScreen,
+		RegisterScreen,
+		ForgotScreen,
+		LoginScreen,
+		TermScreen
+	},
+	{
+		navigationOptions: { header: null, gesturesEnabled: false }
+	}
+);

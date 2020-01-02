@@ -1,3 +1,31 @@
 {
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "typescriptHero.imports.organizeOnSave": true,
+  "typescriptHero.imports.insertSpaceBeforeAndAfterImportBraces": true,
+  "eslint.enable": false,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "remimarsal.prettier-now"
+  },
+  "prettier.configPath": ".prettierrc",
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "prettier.semi": false
 }

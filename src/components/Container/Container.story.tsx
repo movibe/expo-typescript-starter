@@ -3,15 +3,15 @@ import { storiesOf } from '@storybook/react'
 import { Text } from 'react-native'
 import { Container } from './index'
 import { withKnobs, text, boolean } from '@storybook/addon-knobs';
-import { StorybookContainer, withRedux } from 'hocs'
+import { StorybookHoc, withRedux } from 'hocs'
 
 storiesOf('Components', module)
   .addDecorator(withKnobs)
   .addDecorator(withRedux())
   .add('Container', () => (
-    <StorybookContainer>
+    <StorybookHoc>
       <Container padding={boolean('padding', false)}>
         <Text>{text('title', 'Hello world')}</Text>
       </Container>
-    </StorybookContainer>
+    </StorybookHoc>
   ))

@@ -1,0 +1,12 @@
+{
+	"printWidth": 100,
+	"tabWidth": 2,
+	"semi": false,
+	"arrowParens": "avoid",
+	"requirePragma": true,
+	"singleQuote": true,
+	"trailingComma": "all",
+	"bracketSpacing": true,
+	"jsxBracketSameLine": true,
+	"parser": "typescript"
+}

@@ -1,3 +1,3 @@
 export * from './withRedux'
 export * from './useIsAuthenticated'
-export * from './StorybookContainer'
+export * from './StorybookHoc'
