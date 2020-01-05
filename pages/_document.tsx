@@ -44,7 +44,7 @@ body {
   -ms-overflow-style: scrollbar;
 }
 `
-export async function getInitialProps({ renderPage }) {
+export const getInitialProps = async ({ renderPage }) => {
 	AppRegistry.registerComponent('Main', () => Main)
 	const { getStyleElement } = AppRegistry.getApplication('Main')
 	const sheet = new ServerStyleSheet()

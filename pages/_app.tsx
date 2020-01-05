@@ -1,3 +1,4 @@
+import { ThemeHoc } from 'hocs/ThemeHoc'
 import React from 'react'
 import { ActivityIndicator } from 'react-native-paper'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -11,7 +12,9 @@ export default ({ Component, pageProps }) => {
 		<SafeAreaProvider>
 			<Provider store={store}>
 				<PersistGate loading={<ActivityIndicator />} persistor={persister}>
-					<Component {...pageProps} />
+					<ThemeHoc>
+						<Component {...pageProps} />
+					</ThemeHoc>
 				</PersistGate>
 			</Provider>
 		</SafeAreaProvider>

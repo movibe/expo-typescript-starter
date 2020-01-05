@@ -1,10 +1,12 @@
 import React from 'react'
-import { Text, View } from 'react-native'
+import { Text } from 'react-native-paper'
+
+import { AppPage } from '../src/components/AppPage'
 
 export default function App() {
 	return (
-		<View>
+		<AppPage title="Muito bem" padding>
 			<Text>Relax baby</Text>
-		</View>
+		</AppPage>
 	)
 }

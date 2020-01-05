@@ -5,7 +5,7 @@ import { Provider as PaperProvider } from 'react-native-paper'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppThemeChange } from 'store/app/actions'
 import { IAppState } from 'store/types'
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components/native'
 import { darkTheme, lightTheme } from 'theme'
 
 export const ThemeHoc: React.FC = ({ children }) => {

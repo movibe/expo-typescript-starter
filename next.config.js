@@ -8,12 +8,36 @@ const withPlugins = require('next-compose-plugins')
 
 module.exports = withPlugins(
   [
-    // [
-    //   withTM,
-    //   {
-    //     transpileModules: ['...'],
-    //   },
-    // ],
+    [
+      withTM,
+      {
+        transpileModules: [
+          "react-native", "styled-components", "styled-components/native"
+        ],
+        webpack: config => ({
+          ...config,
+          resolve: {
+            ...config.resolve,
+            extensions: [
+              '.web.ts',
+              '.web.tsx',
+              '.ts',
+              '.tsx',
+              '.web.js',
+              '.web.jsx',
+              '.js',
+              '.jsx',
+              ...config.resolve.extensions
+            ],
+            alias: {
+              ...config.resolve.alias,
+              'react-native$': 'react-native-web'
+            }
+          }
+        })
+        
+      },
+    ],
     withFonts,
     withImages,
     [withExpo, { projectRoot: __dirname }],
