@@ -11,7 +11,6 @@
         "welcome": "Welcome {{name}} to our localized app!",
         "login_button": "Login",
         "signup_button": "Sign Up"
-
     },
     "user_profile": {
         "title": "Your Profile"
@@ -27,7 +26,8 @@
         "submit": "Submit",
         "facebook": "Sign In With Facebook",
         "emailRequired": "E-mail address is required",
-        "required": "This is required"
+        "required": "This is required",
+        "forgot": "Recovery pass"
     },
     "yes": "Yes",
     "no": "No",

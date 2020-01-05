@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux'
 import { IAppState } from 'store/types'
 
 import { ThemeHoc } from '../hocs/ThemeHoc'
-import Routes from './Routes'
+import Routes from './routes'
 
 const Screens: React.FC = () => {
 	const language = useSelector((state: IAppState) => state.app.language)
