@@ -1,10 +1,11 @@
+import { ActionSheetProvider } from '@expo/react-native-action-sheet'
 import React from 'react'
 import { Appearance, AppearanceProvider, useColorScheme } from 'react-native-appearance'
 import { Provider as PaperProvider } from 'react-native-paper'
 import { useDispatch, useSelector } from 'react-redux'
 import { AppThemeChange } from 'store/app/actions'
 import { IAppState } from 'store/types'
-import { ThemeProvider } from 'styled-components/native'
+import { ThemeProvider } from 'styled-components'
 import { darkTheme, lightTheme } from 'theme'
 
 export const ThemeHoc: React.FC = ({ children }) => {
@@ -28,9 +29,11 @@ export const ThemeHoc: React.FC = ({ children }) => {
 
 	return (
 		<AppearanceProvider>
-			<PaperProvider theme={_theme}>
-				<ThemeProvider theme={_theme.colors}>{children}</ThemeProvider>
-			</PaperProvider>
+			<ActionSheetProvider>
+				<PaperProvider theme={_theme}>
+					<ThemeProvider theme={_theme.colors}>{children}</ThemeProvider>
+				</PaperProvider>
+			</ActionSheetProvider>
 		</AppearanceProvider>
 	)
 }

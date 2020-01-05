@@ -1,0 +1,39 @@
+{
+	"presets": ["next/babel"],
+	"plugins": [
+		[
+			"@babel/plugin-proposal-decorators",
+			{
+				"legacy": true
+			}
+		],
+		[
+			"styled-components",
+			{
+				"ssr": true,
+				"displayName": true,
+				"preprocess": false
+			}
+		],
+		[
+			"module-resolver",
+			{
+				"root": ["."],
+				"alias": {
+					"api": "./src/api",
+					"data": "./src/data",
+					"lib": "./src/lib",
+					"hocs": "./src/hocs",
+					"mds": "./src/mds",
+					"config": "./src/config",
+					"helpers": "./src/helpers",
+					"styles": "./src/styles",
+					"components": "./src/components",
+          			"containers": "./src/containers",
+					"store": "./src/store",
+					"theme": "./src/theme"
+				}
+			}
+		]
+	]
+}

@@ -1,7 +1,7 @@
 module.exports = api => {
   api.cache(true)
   return {
-    presets: ['babel-preset-expo'],
+    presets: ['@expo/next-adapter/babel'],
     plugins: [
       'react-native-paper/babel',
       'babel-plugin-styled-components',
