@@ -1,3 +1,5 @@
 export * from './withRedux'
 export * from './useIsAuthenticated'
 export * from './StorybookHoc'
+export * from './LanguageHoc'
+export * from './ThemeHoc'

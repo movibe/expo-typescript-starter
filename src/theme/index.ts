@@ -1,4 +1,7 @@
 import { DarkTheme, DefaultTheme, Theme } from 'react-native-paper'
+import styled from 'styled-components/native'
+
+export default styled
 
 const pallete = {
   primary: '#006699',

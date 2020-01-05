@@ -1,21 +1,27 @@
-import React from 'react';
-import { ActivityIndicator } from 'react-native';
-import { PersistGate } from 'redux-persist/integration/react';
-import { Provider } from 'react-redux';
-import { ApolloProvider } from 'react-apollo';
-import { configureStore } from 'store';
-import Screens from 'screens';
-import { client } from 'server';
-import 'locales';
+import 'locales'
 
-const { store, persister } = configureStore(false, true);
+import { LanguageHoc, ThemeHoc } from 'hocs'
+import React from 'react'
+import { ApolloProvider } from 'react-apollo'
+import { ActivityIndicator } from 'react-native'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
+import Screens from 'screens'
+import { client } from 'server'
+import { configureStore } from 'store'
+
+const { store, persister } = configureStore(false, true)
 
 export const App: React.FC = () => (
 	<ApolloProvider client={client}>
 		<Provider store={store}>
 			<PersistGate loading={<ActivityIndicator />} persistor={persister}>
-				<Screens />
+				<ThemeHoc>
+					<LanguageHoc>
+						<Screens />
+					</LanguageHoc>
+				</ThemeHoc>
 			</PersistGate>
 		</Provider>
 	</ApolloProvider>
-);
+)

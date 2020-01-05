@@ -6,6 +6,12 @@ import { Provider } from 'react-redux'
 import { PersistGate } from 'redux-persist/integration/react'
 import { configureStore } from 'store'
 
+//@ts-ignore
+if (typeof window === 'undefined') {
+	//@ts-ignore
+	global.window = {}
+}
+
 const { store, persister } = configureStore(false, true)
 export default ({ Component, pageProps }) => {
 	return (
