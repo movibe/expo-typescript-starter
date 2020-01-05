@@ -1,10 +1,11 @@
 import { Action, Reducer } from 'redux'
 import { themes } from 'theme'
+
 import * as actions from './actions'
 import { IApp } from './types'
 
 export const initialState: IApp = {
-  language: 'en',
+  language: 'pt',
   theme:  themes.light,
   online: false
 }

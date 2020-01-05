@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { lightTheme, darkTheme, ITheme } from 'theme'
+import { SearchBar } from 'react-native-elements'
 import { Appbar } from 'react-native-paper'
 import { useSelector } from 'react-redux'
 import { IAppState } from 'store/types'
-import { SearchBar } from 'react-native-elements'
+import { darkTheme, ITheme, lightTheme } from 'theme'
 
 export interface AppHeaderButton {
   title?: string
@@ -29,7 +29,7 @@ export const AppHeader: React.FC<IProps> = ({ onBack, title, search }) => {
 
   if (search) {
     return (
-      <Appbar.Header style={{ backgroundColor: _theme.colors.surface }}>
+      <Appbar.Header style={{ backgroundColor: _theme.colors.background }}>
         {onBack && <Appbar.BackAction onPress={onBack} />}
 
         <SearchBar placeholder={'Search'} />
@@ -39,7 +39,7 @@ export const AppHeader: React.FC<IProps> = ({ onBack, title, search }) => {
 
   if (title)
     return (
-      <Appbar.Header style={{ backgroundColor: _theme.colors.surface }}>
+      <Appbar.Header style={{ backgroundColor: _theme.colors.background }}>
         {onBack && <Appbar.BackAction onPress={onBack} />}
 
         <Appbar.Content title={title} />

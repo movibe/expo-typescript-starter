@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 export default styled
 
 const pallete = {
-  primary: '#006699',
+  primary: '#BE95FD',
   accent: '#546e7a'
 }
 
@@ -25,7 +25,7 @@ export const darkTheme: Theme = {
     ...DarkTheme.colors,
     primary: pallete.primary,
     accent: pallete.accent,
-    background: '#070809',
+    background: '#0E0D12',
     surface: '#171717'
   }
 }

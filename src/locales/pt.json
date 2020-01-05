@@ -1,4 +1,7 @@
 {
+    "welcome": {
+        "title": "Bem vindo"
+    },
     "closeApp": {
         "title": "Fechar aplicativo",
         "message": "Tem certeza que deseja sair?"
@@ -7,6 +10,7 @@
         "title": "Cadastre-se"
     },
     "login": {
+        "title": "Entrar",
         "welcome": "Bem vindo {{name}} para o nosso aplicativo localizado!",
         "login_button": "Conecte-se",
         "signup_button": "Cadastre-se"
@@ -16,6 +20,9 @@
     },
     "form": {
         "login": "Login",
+        "phone": "Telefone",
+        "firstName": "Nome",
+        "lastName": "Sobrenome",
         "register": "Cadastro",
         "email": "E-mail",
         "password": "Senha",
@@ -27,5 +34,4 @@
     "yes": "Sim",
     "no": "Não",
     "cancel": "Cancelar"
-
 }

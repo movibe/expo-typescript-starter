@@ -25,7 +25,7 @@ const ButtonBorder =styled(TouchableOpacity)<IButtonBorder>`
 	justify-content: center;
 	align-items: center;
 	border-bottom-width: ${(props)=> props.active ? '2px' : '0px'};;
-	border-bottom-color: #fff;
+	border-bottom-color: ${props=>props.theme.primary};
 `
 interface IProps {}
 
@@ -40,7 +40,7 @@ export const AuthScreen: React.FC<IProps> = () => {
 		}
 	}
 	return (
-		<AppPage title={t('login.title')} padding>
+		<AppPage title={t('welcome.title')} padding>
 			<Row>
 				<ButtonBorder active={SlideIndex === 0}
 				disabled={SlideIndex ===0}
